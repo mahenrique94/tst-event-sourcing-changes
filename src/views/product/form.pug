@@ -1,0 +1,42 @@
+html
+  head
+    title Products form
+    link(rel='stylesheet', href='/assets/css/styles.css')
+  body
+    h1 Products form
+    a(href='/products') Products list
+    br
+    br
+    fieldset
+      legend Meta
+      form(action=`/products${product.id ? '?_method=PUT' : ''}`, method='POST')
+        input(name='id', type='hidden', value=product.id)
+        label(for='sku') SKU
+          br
+          input(name='sku', required, type='text', value=product.sku)
+        br
+        br
+        label(for='name') Name
+          br
+          input(name='name', required, type='text', value=product.name)
+        br
+        br
+        label(for='category') Category
+          br
+          input(name='category', required, type='text', value=product.category)
+        br
+        br
+        label(for='sale')
+          input(checked=product.sale, name='sale', type='checkbox', value='true')
+          | Sale
+        br
+        br
+        button(type='submit') Save
+    h3 Histórico
+    each event, i in events
+      div.row
+        code!= JSON.stringify(event.payload, null, 2).replaceAll(/(\n)/g, '<br/>')
+        if (events[i + 1])
+          code!= JSON.stringify(events[i + 1].payload, null, 2).replaceAll(/(\n)/g, '<br/>')
+    script(src='/assets/js/diff.js')
+    script(src='/assets/js/scripts.js') 

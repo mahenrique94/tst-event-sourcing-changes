@@ -1,0 +1,16 @@
+{
+  "env": {
+    "NODE_ENV": "development"
+  },
+  "execMap": {
+    "js": "node --harmony"
+  },
+  "ext": "js",
+  "ignore": [
+    "node_modules"
+  ],
+  "verbose": true,
+  "watch": [
+    "./src"
+  ]
+}

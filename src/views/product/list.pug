@@ -1,0 +1,27 @@
+html
+  head
+    title Products list
+  body
+    h1 Products list
+    a(href='/') Home&nbsp;&nbsp;&nbsp;
+    a(href='/products/form') Products form
+    table
+      thead
+        th Id
+        th SKU
+        th Name
+        th Category
+        th Sales
+        th
+      tbody
+        each product in products
+          tr
+            td= product.id
+            td= product.sku
+            td= product.name
+            td= product.category
+            td= product.sale
+            td
+              a(href=`/products/${product.id}`) edit
+              form(action=`/products/${product.id}?_method=DELETE`, onsubmit='return confirm(\'Are you sure?\')', method='POST')
+                button(type='submit') delete

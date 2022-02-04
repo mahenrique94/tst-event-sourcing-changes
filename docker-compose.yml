@@ -1,0 +1,30 @@
+version: '3'
+services:
+  db_nosql:
+    container_name: db_nosql
+    image: mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=root
+      - MONGO_INITDB_DATABASE=tst_event_sourcing
+    ports:
+      - 27017:27017
+
+  db_sql:
+    container_name: db_sql
+    image: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=tst_event_sourcing
+    ports:
+      - 3306:3306
+
+  broker:
+    container_name: broker
+    image: rabbitmq:management
+    environment:
+      - RABBITMQ_DEFAULT_USER=root
+      - RABBITMQ_DEFAULT_PASS=root
+    ports:
+      - 8080:8080
+      - 5672:5672
